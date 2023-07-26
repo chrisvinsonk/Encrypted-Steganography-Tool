@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Steganography Encoder/Decoder</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4285f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 4px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3367d6;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: #4285f4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #3367d6;
+        }
+    </style>
+</head>
+<body>
+<h1>Steganography Encoder/Decoder</h1>
+<p th:text="${message}"></p>
+<form action="/steganography/encode" method="post" enctype="multipart/form-data">
+    <label for="inputImage">Upload Image:</label>
+    <input type="file" id="inputImage" name="inputImage"><br>
+    <label for="message">Enter Message:</label><br>
+    <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Encode">
+</form>
+
+<form action="/steganography/decode" method="post" enctype="multipart/form-data">
+    <label for="encodedImage">Upload Encoded Image:</label>
+    <input type="file" id="encodedImage" name="encodedImage"><br>
+    <input type="submit" value="Decode">
+</form>
+</body>
+</html>
